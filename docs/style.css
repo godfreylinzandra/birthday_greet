@@ -1,0 +1,274 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: system-ui;
+  overflow: hidden;
+  background: linear-gradient(135deg,#4f1515,#d43434,#640202d8,#88080e);
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h2 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 200px;
+  color: white;
+  z-index: 20;
+}
+/* Birthday title on the cake screen: match the gradient heading from the first screen */
+#birthdayTitle {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 80px;
+  z-index: 30;
+
+  /* Gradient text like the first screen */
+  background: radial-gradient(circle at 40% 30%, #a90000, #510000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  /* subtle glow */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+}
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 20px;
+  z-index: 20;
+
+  /* Gradient text */
+  background: radial-gradient(circle at 40% 30%, #a90000, #510000);
+  -webkit-background-clip: text;
+  background-clip: text; /* standard property for compatibility */
+  color: transparent; /* fallback/standard for non-WebKit browsers */
+  -webkit-text-fill-color: transparent;
+
+  /* Optional: shadow/glow */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* Cake screen background: start light, transition to dark when fireworks start */
+#birthdayScreen {
+  /* subtle light gradient for the cake screen */
+  background: linear-gradient(180deg, #ffffff 0%, #f1d8d8 100%);
+  transition: background 800ms ease, color 600ms ease;
+  color: #111;
+}
+
+#birthdayScreen.fireworks-active {
+  /* dark background used while fireworks play */
+  background: linear-gradient(180deg, #000000 0%, #080808 100%);
+  color: #fff;
+}
+
+.card {
+  background: white;
+  color: #333;
+  padding: 30px 30px;
+  border-radius: 16px;
+  width: 400px;
+  text-align: center;
+  border-style: solid;
+  border-width: .5px;
+  border-color: rgb(0, 0, 0);
+}
+
+input {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  background: radial-gradient(circle at 40% 30%, #a90000, #510000);
+  color: white;
+  cursor: pointer;
+  z-index: 30;
+  position: relative;
+  border-style: solid;
+  border-width: .5px;
+  border-color: white;
+  gap: 10px;
+
+}
+
+button:hover { 
+    background: radial-gradient(circle at 40% 30%, #fcfcfc, #fea1a1);
+    color: rgb(0, 0, 0);
+    
+}
+
+#countdown {
+  font-size: 200px;
+  font-weight: bold;
+
+  /* keep the element sized to its content so a border can hug the number */
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 18px;
+
+  /* Glyph/stroke for WebKit (gives an outline around the numeral shapes) */
+  -webkit-text-stroke: 2px rgba(255,255,255,0.9);
+
+  /* Text-shadow outline fallback for browsers that don't support text-stroke */
+  text-shadow:
+    -1px -1px 0 rgba(57, 1, 1, 0.8),
+    1px -1px 0 rgba(57, 1, 1, 0.8),
+    -1px 1px 0 rgba(57, 1, 1, 0.8),
+    1px 1px 0 rgba(57, 1, 1, 0.8);
+
+  /* Keep digits monospaced to avoid shifting during countdown */
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* CAKE */
+:root {
+  --cake: #f4b1a3;
+  --frost: #fff;
+  --plate: #fdeedb;
+}
+
+.cake-wrap {
+  position: relative;
+  width: 480px;
+  margin-top: 20px;
+  z-index: 20;
+}
+
+.cake {
+  background: var(--cake);
+  border-radius: 18px;
+  padding: 40px 20px 20px;
+  position: relative;
+}
+
+.frost {
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  right: 18px;
+  height: 26px;
+  background: var(--frost);
+  border-radius: 14px;
+}
+.plate {
+  height: 26px;
+  background: var(--plate);
+  border-radius: 40px;
+  margin-top: 14px;
+}
+.wish {
+  height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+/* CANDLES */
+.candle-row {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  width: 360px;
+  justify-content: center;
+  z-index: 25;
+}
+
+.candle {
+  width: 12px;
+  height: 44px;
+  background: #ffd6a6;
+  border-radius: 3px;
+  position: relative;
+
+}
+
+.flame {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 14px;
+  height: 20px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 40% 40%;
+  background: radial-gradient(circle at 40% 30%, #fff1a8, #ff8c42);
+  animation: flicker 0.2s infinite;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(0.95); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* PUFF */
+.puff {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.puff span {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #eee;
+  border-radius: 50%;
+  animation: puffAnim 0.8s forwards;
+}
+@keyframes puffAnim {
+  to {
+    transform: translateY(-40px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* FIREWORKS */
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  /* transparent so fireworks appear over the page background/cake */
+  background: transparent;
+  display: none;
+}
+
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--x), var(--y)) scale(4); opacity: 0; }
+}
+
