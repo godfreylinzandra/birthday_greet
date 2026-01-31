@@ -110,6 +110,7 @@ function createCandles() {
     c.innerHTML = '<div class="flame"></div>';
     candleRow.appendChild(c);
   }
+  const statusBox = document.getElementById("statusBox");
 
   candles = [...document.querySelectorAll(".candle")];
 
