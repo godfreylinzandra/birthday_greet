@@ -112,7 +112,7 @@ function createCandles() {
   }
 
   candles = [...document.querySelectorAll(".candle")];
-  statusBox.textContent = "30 candles lit. Kuya open tim mic para  mablow it candles!!";
+  statusBox.textContent = "30 candles lit." <br>" Kuya open tim mic para  mablow it candles. Dida blow hit harani ha mic okay okayyy.";
 
   fireworks.style.display = "none";
   fireworks.innerHTML = "";
