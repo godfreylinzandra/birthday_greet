@@ -271,7 +271,4 @@ button:hover {
   0% { transform: translate(0, 0) scale(1); opacity: 1; }
   100% { transform: translate(var(--x), var(--y)) scale(4); opacity: 0; }
 }
-#statusBox {
-  text-align: center; /* centers the text horizontally */
-}
 
