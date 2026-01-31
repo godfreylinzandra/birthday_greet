@@ -104,7 +104,7 @@ function createCandles() {
   candleRow.innerHTML = "";
   blown = 0;
 
-  for (let i = 0; i < 27; i++) {
+  for (let i = 0; i < 30; i++) {
     const c = document.createElement("div");
     c.className = "candle";
     c.innerHTML = '<div class="flame"></div>';
@@ -112,7 +112,7 @@ function createCandles() {
   }
 
   candles = [...document.querySelectorAll(".candle")];
-  statusBox.textContent = "27 candles lit. Kindly enable your mic to blow the candles!!";
+  statusBox.textContent = "30 candles lit. Kuya open tim mic para  mablow it candles!!";
 
   fireworks.style.display = "none";
   fireworks.innerHTML = "";
