@@ -115,9 +115,9 @@ function createCandles() {
   candles = [...document.querySelectorAll(".candle")];
 
 statusBox.innerHTML = 
-  "< style='text-align: center;'>30 candles lit.<br>"+
+  "<div style='text-align: center;'>30 candles lit.<br>"+
   "Kuya open tim mic para mablow it candles. Dida blow hit harani ha mic okay okayyy.<br>" +
-  "Pag dire ngani dumara pindota nala it Blow button HAHAHHA";
+  "Pag dire ngani dumara pindota nala it Blow button HAHAHHA"</div>";
 
   fireworks.style.display = "none";
   fireworks.innerHTML = "";
