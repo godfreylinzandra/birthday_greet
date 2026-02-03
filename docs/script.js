@@ -115,7 +115,7 @@ function createCandles() {
   candles = [...document.querySelectorAll(".candle")];
 
 statusBox.innerHTML = 
-  "<div style='text-align: center;'>30 candles lit.</div>"+
+  "< style='text-align: center;'>30 candles lit.<br>"+
   "Kuya open tim mic para mablow it candles. Dida blow hit harani ha mic okay okayyy.<br>" +
   "Pag dire ngani dumara pindota nala it Blow button HAHAHHA";
 
