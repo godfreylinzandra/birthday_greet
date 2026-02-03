@@ -109,15 +109,10 @@ function createCandles() {
     c.className = "candle";
     c.innerHTML = '<div class="flame"></div>';
     candleRow.appendChild(c);
+
   }
-  const statusBox = document.getElementById("statusBox");
 
-  candles = [...document.querySelectorAll(".candle")];
-
-statusBox.innerHTML = 
-  "<div style='text-align: center;'>30 candles lit.<br>"+
-  "Kuya open tim mic para mablow it candles. Dida blow hit harani ha mic okay okayyy.<br>" +
-  "Pag dire ngani dumara pindota nala it Blow button HAHAHHA"</div>";
+  statusBox.textContent = "30 candles lit.<br> Kuya open tim mic para  mablow it candles. Dida blow hit harani ha mic okay okayyy.";
 
   fireworks.style.display = "none";
   fireworks.innerHTML = "";
