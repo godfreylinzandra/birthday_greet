@@ -100,7 +100,7 @@ const statusBox = document.getElementById("status");
 const fireworks = document.getElementById("fireworks");
 
 function renderStatusNote(remaining) {
-  const title = remaining > 0 ? `${remaining} candles left.` : "All candles blown!";
+  const title = remaining > 0 ? `${remaining} candles lit.` : "All candles blown!";
   statusBox.innerHTML =
     "<div class='note-box'>" +
     `<p class='note-title'>${title}</p>` +
