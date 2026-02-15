@@ -99,9 +99,20 @@ const candleRow = document.getElementById("candles");
 const statusBox = document.getElementById("status");
 const fireworks = document.getElementById("fireworks");
 
+function renderStatusNote(remaining) {
+  const title = remaining > 0 ? `${remaining} candles left.` : "All candles blown!";
+  statusBox.innerHTML =
+    "<div class='note-box'>" +
+    `<p class='note-title'>${title}</p>` +
+    "<p>Kuya open tim mic para mablow it candles. Dida blow hit harani ha mic okay okayyy.</p>" +
+    "<p>Pag dire ngadi dumara pindota nala it Blow button HAHAHAHAHA</p>" +
+    "</div>";
+}
+
 function createCandles() {
   candleRow.innerHTML = "";
   blown = 0;
+  statusBox.style.display = "block";
 
   for (let i = 0; i < 30; i++) {
     const c = document.createElement("div");
@@ -111,10 +122,7 @@ function createCandles() {
 
   }
   candles = [...document.querySelectorAll(".candle")];
-statusBox.innerHTML =
-  "<div style='text-align:center;'>30 candles lit.</div><br>" +
-  "Kuya open tim mic para mablow it candles. Dida blow hit harani ha mic okay okayyy.<br>" +
-  "Pag dire ngadi dumara pindota nala it Blow button HAHAHAHAHA";
+  renderStatusNote(candles.length - blown);
 
 
   fireworks.style.display = "none";
@@ -139,7 +147,7 @@ function blowPair() {
   }
 
   const remaining = candles.length - blown;
-  statusBox.textContent = remaining > 0 ? `${remaining} candles left` : "";
+  renderStatusNote(remaining);
 
   if (remaining === 0) startFireworks();
 }
@@ -160,6 +168,7 @@ document.addEventListener("keydown", e => {
  * FIREWORKS + MUSIC
  *********************************/
 function startFireworks() {
+  statusBox.style.display = "none";
   fireworks.style.display = "block";
 
   // switch cake screen to dark background while fireworks play

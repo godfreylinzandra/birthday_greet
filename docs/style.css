@@ -298,6 +298,32 @@ button:hover {
   max-width: min(520px, 90vw);
 }
 
+.note-box {
+  margin: 8px auto 0;
+  padding: 14px 16px;
+  max-width: min(560px, 92vw);
+  background: #fff8e9;
+  border: 1px solid #e4d2aa;
+  border-left: 6px solid #a90000;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.note-title {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.note-box p {
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+.note-box p:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 700px) {
   #birthdayScreen {
     justify-content: flex-start;
