@@ -56,8 +56,7 @@ function switchScreen(id) {
  * COUNTDOWN (FIXED)
  *********************************/
 function startCountdown() {
-  name = document.getElementById("nameInput").value.trim();
-  if (!name) return alert("Please enter your name.");
+  name = "Kuya";
 
   // Unlock audio context on user gesture
   playTick();
