@@ -28,7 +28,7 @@ h2 {
 #birthdayTitle {
   font-size: clamp(1.4rem, 4vw, 2.5rem);
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
   line-height: 1.2;
   max-width: min(92vw, 680px);
   padding: 0 8px;
@@ -212,6 +212,7 @@ button:hover {
   background: #ffd6a6;
   border-radius: 3px;
   position: relative;
+  
 
 }
 
