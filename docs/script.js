@@ -41,62 +41,6 @@ function playTick() {
 
 // Birthday music (HTML audio)
 const music = document.getElementById("birthdayMusic");
-const siteUrlInput = document.getElementById("siteUrlInput");
-const copyLinkBtn = document.getElementById("copyLinkBtn");
-const qrBtn = document.getElementById("qrBtn");
-const qrWrap = document.getElementById("qrWrap");
-const qrImage = document.getElementById("qrImage");
-const downloadQrLink = document.getElementById("downloadQrLink");
-
-function getShareUrl() {
-  if (window.location.protocol === "file:") return window.location.href;
-  return `${window.location.origin}${window.location.pathname}`;
-}
-
-function getQrImageUrl(url) {
-  const encoded = encodeURIComponent(url);
-  return `https://api.qrserver.com/v1/create-qr-code/?size=512x512&data=${encoded}`;
-}
-
-async function copyShareLink() {
-  const text = siteUrlInput.value;
-  try {
-    await navigator.clipboard.writeText(text);
-    copyLinkBtn.textContent = "Copied";
-    setTimeout(() => {
-      copyLinkBtn.textContent = "Copy Link";
-    }, 1300);
-  } catch {
-    const temp = document.createElement("textarea");
-    temp.value = text;
-    document.body.appendChild(temp);
-    temp.select();
-    document.execCommand("copy");
-    temp.remove();
-    copyLinkBtn.textContent = "Copied";
-    setTimeout(() => {
-      copyLinkBtn.textContent = "Copy Link";
-    }, 1300);
-  }
-}
-
-function generateQrCode() {
-  const url = siteUrlInput.value;
-  const qrUrl = getQrImageUrl(url);
-  qrImage.src = qrUrl;
-  downloadQrLink.href = qrUrl;
-  qrWrap.hidden = false;
-}
-
-function initShareTools() {
-  if (!siteUrlInput || !copyLinkBtn || !qrBtn) return;
-  siteUrlInput.value = getShareUrl();
-  copyLinkBtn.addEventListener("click", copyShareLink);
-  qrBtn.addEventListener("click", generateQrCode);
-  generateQrCode();
-}
-
-initShareTools();
 
 /*********************************
  * SCREEN CONTROL

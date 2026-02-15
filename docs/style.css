@@ -278,49 +278,6 @@ button:hover {
   100% { transform: translate(var(--x), var(--y)) scale(4); opacity: 0; }
 }
 
-.share-box {
-  margin-top: 16px;
-  border-top: 1px solid #ddd;
-  padding-top: 14px;
-}
-
-.share-title {
-  margin: 0 0 10px;
-  font-weight: 600;
-}
-
-.share-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.btn.secondary {
-  margin-top: 10px;
-}
-
-.qr-wrap {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-#qrImage {
-  width: min(220px, 70vw);
-  height: auto;
-  border: 6px solid #fff;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-}
-
-#downloadQrLink {
-  color: #510000;
-  font-weight: 600;
-}
-
 .controls {
   display: flex;
   flex-wrap: wrap;
