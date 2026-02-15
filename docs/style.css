@@ -29,6 +29,9 @@ h2 {
   font-size: clamp(1.4rem, 4vw, 2.5rem);
   text-align: center;
   margin-bottom: 80px;
+  line-height: 1.2;
+  max-width: min(92vw, 680px);
+  padding: 0 8px;
   z-index: 30;
 
   /* Gradient text like the first screen */
@@ -302,7 +305,12 @@ button:hover {
   }
 
   #birthdayTitle {
-    margin-bottom: 32px;
+    font-size: clamp(1.9rem, 5.2vw, 2.2rem);
+    margin-bottom: 64px;
+  }
+
+  .cake-wrap {
+    margin-top: 30px;
   }
 
   .cake {
