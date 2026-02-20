@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Kuya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- SCREEN 1 : NAME -->
+<div class="screen active" id="startScreen">
+  <div class="card">
+    <h1>Happy Birthday Kuya2!! 🎉🎉🎉 </h1>
+    <button class="btn" onclick="startCountdown()">Let's Celebrate!!!</button>
+  </div>
+</div>
+
+<!-- SCREEN 2 : COUNTDOWN -->
+<div class="screen" id="countdownScreen">
+  <p id="countdown">5</p>
+</div>
+
+<!-- SCREEN 3 : CAKE -->
+<div class="screen" id="birthdayScreen">
+  <h2 id="birthdayTitle"></h2>
+
+  <div class="cake-wrap">
+    <div class="candle-row" id="candles"></div>
+
+    <div class="cake">
+      <div class="frost"></div>
+      <div class="wish">Make a wish!!! Happy Birthday Kuya2 !!!</div>
+    </div>
+
+    <div class="plate"></div>
+    <div class="puff" id="puff"></div>
+  </div>
+
+  <div class="status" id="status">30 candles lit</div>
+
+  <div class="controls">
+    <button id="blowBtn">Blow</button>
+    <button id="resetBtn">Reset</button>
+    <button id="micBtn">Enable Mic</button>
+  </div>
+</div>
+
+<!-- FIREWORKS + MUSIC -->
+<div id="fireworks"></div>
+<audio id="tickSound" src="birthday_greet/docs/tick.mp3"></audio>
+<audio id="birthdayMusic" src="birthday_greet/docs/birthday.mp3" loop></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
+
