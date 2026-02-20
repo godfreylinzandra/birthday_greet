@@ -14,6 +14,7 @@ let audioCtx, analyser, micStream, dataArray;
 
 // Fireworks
 let fireworksInterval = null;
+let fallbackSongInterval = null;
 
 /*********************************
  * AUDIO (WEB AUDIO = NO BLOCKING)
@@ -37,6 +38,49 @@ function playTick() {
 
   osc.start();
   osc.stop(tickCtx.currentTime + 0.07);
+}
+
+function playFallbackSongOnce() {
+  if (!tickCtx) {
+    tickCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (tickCtx.state === "suspended") {
+    tickCtx.resume();
+  }
+
+  const notes = [392, 392, 440, 392, 523, 494, null, 392, 392, 440, 392, 587, 523];
+  let t = tickCtx.currentTime;
+
+  notes.forEach(freq => {
+    if (!freq) {
+      t += 0.2;
+      return;
+    }
+
+    const osc = tickCtx.createOscillator();
+    const gain = tickCtx.createGain();
+    osc.type = "triangle";
+    osc.frequency.value = freq;
+    gain.gain.value = 0.06;
+
+    osc.connect(gain);
+    gain.connect(tickCtx.destination);
+    osc.start(t);
+    osc.stop(t + 0.17);
+    t += 0.2;
+  });
+}
+
+function startFallbackSong() {
+  if (fallbackSongInterval) return;
+  playFallbackSongOnce();
+  fallbackSongInterval = setInterval(playFallbackSongOnce, 3200);
+}
+
+function stopFallbackSong() {
+  if (!fallbackSongInterval) return;
+  clearInterval(fallbackSongInterval);
+  fallbackSongInterval = null;
 }
 
 // Birthday music (HTML audio)
@@ -155,6 +199,7 @@ function createCandles() {
   if (cakeScreen) cakeScreen.classList.remove("fireworks-active");
 
   if (fireworksInterval) clearInterval(fireworksInterval);
+  stopFallbackSong();
 
   music.pause();
   music.currentTime = 0;
@@ -204,8 +249,7 @@ function startFireworks() {
   primeBirthdayMusic();
   music.volume = 0.6;
   music.play().catch(() => {
-    statusBox.style.display = "block";
-    statusBox.textContent = "Tap Blow once to allow music, then blow all candles again.";
+    startFallbackSong();
   });
 
   function burst() {
