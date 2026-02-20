@@ -41,6 +41,27 @@ function playTick() {
 
 // Birthday music (HTML audio)
 const music = document.getElementById("birthdayMusic");
+let musicPrimed = false;
+
+function primeBirthdayMusic() {
+  if (!music || musicPrimed) return;
+
+  music.muted = true;
+  const primingPlay = music.play();
+
+  if (primingPlay && typeof primingPlay.then === "function") {
+    primingPlay
+      .then(() => {
+        music.pause();
+        music.currentTime = 0;
+        music.muted = false;
+        musicPrimed = true;
+      })
+      .catch(() => {
+        music.muted = false;
+      });
+  }
+}
 
 /*********************************
  * SCREEN CONTROL
@@ -60,6 +81,7 @@ function startCountdown() {
 
   // Unlock audio context on user gesture
   playTick();
+  primeBirthdayMusic();
 
   count = 5;
   const countdownEl = document.getElementById("countdown");
@@ -153,13 +175,17 @@ function blowPair() {
 }
 
 // Buttons
-document.getElementById("blowBtn").onclick = blowPair;
+document.getElementById("blowBtn").onclick = () => {
+  primeBirthdayMusic();
+  blowPair();
+};
 document.getElementById("resetBtn").onclick = createCandles;
 
 // Spacebar blow
 document.addEventListener("keydown", e => {
   if (e.code === "Space") {
     e.preventDefault();
+    primeBirthdayMusic();
     blowPair();
   }
 });
@@ -175,8 +201,12 @@ function startFireworks() {
   const cakeScreen = document.getElementById("birthdayScreen");
   if (cakeScreen) cakeScreen.classList.add("fireworks-active");
 
+  primeBirthdayMusic();
   music.volume = 0.6;
-  music.play().catch(() => {});
+  music.play().catch(() => {
+    statusBox.style.display = "block";
+    statusBox.textContent = "Tap Blow once to allow music, then blow all candles again.";
+  });
 
   function burst() {
     for (let i = 0; i < 50; i++) {
@@ -201,6 +231,7 @@ function startFireworks() {
  *********************************/
 document.getElementById("micBtn").onclick = async () => {
   if (micStream) return;
+  primeBirthdayMusic();
 
   try {
     micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
